@@ -153,7 +153,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "time() - max(minio_node_process_starttime_seconds{job=\"$scrape_jobs\"})",
+          "expr": "time() - max(minio_node_process_starttime_seconds{job=~\"$scrape_jobs\"})",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -231,7 +231,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (instance) (minio_s3_traffic_received_bytes{job=\"$scrape_jobs\"})",
+          "expr": "sum by (instance) (minio_s3_traffic_received_bytes{job=~\"$scrape_jobs\"})",
           "format": "table",
           "hide": false,
           "instant": false,
@@ -308,7 +308,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=\"$scrape_jobs\"}) by (instance))",
+          "expr": "topk(1, sum(minio_cluster_capacity_usable_free_bytes{job=~\"$scrape_jobs\"}) by (instance))",
           "format": "time_series",
           "instant": false,
           "interval": "1m",
@@ -372,7 +372,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "minio_cluster_usage_total_bytes{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_usage_total_bytes{job=~\"$scrape_jobs\"}",
           "interval": "",
           "legendFormat": "Used Capacity",
           "range": true,
@@ -468,7 +468,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "minio_cluster_objects_size_distribution{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_objects_size_distribution{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -549,7 +549,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum (minio_node_file_descriptor_open_total{job=\"$scrape_jobs\"})",
+          "expr": "sum (minio_node_file_descriptor_open_total{job=~\"$scrape_jobs\"})",
           "format": "table",
           "hide": false,
           "instant": false,
@@ -628,7 +628,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (instance) (minio_s3_traffic_sent_bytes{job=\"$scrape_jobs\"})",
+          "expr": "sum by (instance) (minio_s3_traffic_sent_bytes{job=~\"$scrape_jobs\"})",
           "format": "table",
           "hide": false,
           "instant": false,
@@ -711,7 +711,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum without (server,instance) (minio_node_go_routine_total{job=\"$scrape_jobs\"})",
+          "expr": "sum without (server,instance) (minio_node_go_routine_total{job=~\"$scrape_jobs\"})",
           "format": "table",
           "hide": false,
           "instant": false,
@@ -794,7 +794,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_cluster_nodes_online_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_nodes_online_total{job=~\"$scrape_jobs\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -877,7 +877,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_cluster_disk_online_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_disk_online_total{job=~\"$scrape_jobs\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -964,7 +964,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "minio_cluster_bucket_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_bucket_total{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "1m",
@@ -1029,7 +1029,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (server) (rate(minio_s3_traffic_received_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (server) (rate(minio_s3_traffic_received_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Data Received [{{server}}]",
@@ -1121,7 +1121,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (server) (rate(minio_s3_traffic_sent_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (server) (rate(minio_s3_traffic_sent_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Data Sent [{{server}}]",
@@ -1228,7 +1228,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_cluster_nodes_offline_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_nodes_offline_total{job=~\"$scrape_jobs\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1311,7 +1311,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_cluster_disk_offline_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_disk_offline_total{job=~\"$scrape_jobs\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1398,7 +1398,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "minio_cluster_usage_object_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_cluster_usage_object_total{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "1m",
@@ -1467,7 +1467,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_heal_time_last_activity_nano_seconds{job=\"$scrape_jobs\"}",
+          "expr": "minio_heal_time_last_activity_nano_seconds{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1538,7 +1538,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_usage_last_activity_nano_seconds{job=\"$scrape_jobs\"}",
+          "expr": "minio_usage_last_activity_nano_seconds{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": true,
           "interval": "",
@@ -1605,7 +1605,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (server,api) (increase(minio_s3_requests_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (server,api) (increase(minio_s3_requests_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{server,api}}",
@@ -1697,7 +1697,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (server,api) (increase(minio_s3_requests_errors_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (server,api) (increase(minio_s3_requests_errors_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{server,api}}",
@@ -1819,7 +1819,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (server) (minio_bucket_replication_sent_bytes{job=\"$scrape_jobs\"})",
+          "expr": "sum by (server) (minio_bucket_replication_sent_bytes{job=~\"$scrape_jobs\"})",
           "interval": "",
           "legendFormat": "replication sent bytes [{{server}}]",
           "refId": "A"
@@ -1911,7 +1911,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (server) (minio_bucket_replication_received_bytes{job=\"$scrape_jobs\"})",
+          "expr": "sum by (server) (minio_bucket_replication_received_bytes{job=~\"$scrape_jobs\"})",
           "interval": "",
           "legendFormat": "replication received bytes [{{server}}]",
           "refId": "A"
@@ -1983,7 +1983,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_inter_node_traffic_sent_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_inter_node_traffic_sent_bytes{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -1998,7 +1998,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_inter_node_traffic_received_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_inter_node_traffic_received_bytes{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "Internode Bytes Sent [{{server}}]",
           "refId": "B"
@@ -2086,7 +2086,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (instance) (minio_heal_objects_heal_total{job=\"$scrape_jobs\"})",
+          "expr": "sum by (instance) (minio_heal_objects_heal_total{job=~\"$scrape_jobs\"})",
           "interval": "",
           "legendFormat": "Objects healed in current self heal run",
           "refId": "A"
@@ -2097,7 +2097,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (instance) (minio_heal_objects_error_total{job=\"$scrape_jobs\"})",
+          "expr": "sum by (instance) (minio_heal_objects_error_total{job=~\"$scrape_jobs\"})",
           "hide": false,
           "interval": "",
           "legendFormat": "Heal errors in current self heal run",
@@ -2109,7 +2109,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (instance) (minio_heal_objects_total{job=\"$scrape_jobs\"}) ",
+          "expr": "sum by (instance) (minio_heal_objects_total{job=~\"$scrape_jobs\"}) ",
           "hide": false,
           "interval": "",
           "legendFormat": "Objects scanned in current self heal run",
@@ -2198,7 +2198,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_node_process_cpu_total_seconds{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_node_process_cpu_total_seconds{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "CPU Usage Rate [{{server}}]",
           "refId": "A"
@@ -2286,7 +2286,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_node_process_resident_memory_bytes{job=\"$scrape_jobs\"}",
+          "expr": "minio_node_process_resident_memory_bytes{job=~\"$scrape_jobs\"}",
           "interval": "",
           "legendFormat": "Memory Used [{{server}}]",
           "refId": "A"
@@ -2374,7 +2374,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_node_disk_used_bytes{job=\"$scrape_jobs\"}",
+          "expr": "minio_node_disk_used_bytes{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2464,7 +2464,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_node_disk_free_inodes{job=\"$scrape_jobs\"}",
+          "expr": "minio_node_disk_free_inodes{job=~\"$scrape_jobs\"}",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2566,7 +2566,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_node_syscall_read_total{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_node_syscall_read_total{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
@@ -2581,7 +2581,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_node_syscall_write_total{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_node_syscall_write_total{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "Write Syscalls [{{server}}]",
           "refId": "B"
@@ -2683,7 +2683,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "minio_node_file_descriptor_open_total{job=\"$scrape_jobs\"}",
+          "expr": "minio_node_file_descriptor_open_total{job=~\"$scrape_jobs\"}",
           "interval": "",
           "legendFormat": "Open FDs [{{server}}]",
           "refId": "B"
@@ -2773,7 +2773,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_node_io_rchar_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_node_io_rchar_bytes{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -2786,7 +2786,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(minio_node_io_wchar_bytes{job=\"$scrape_jobs\"}[$__rate_interval])",
+          "expr": "rate(minio_node_io_wchar_bytes{job=~\"$scrape_jobs\"}[$__rate_interval])",
           "interval": "",
           "legendFormat": "Node WChar [{{server}}]",
           "refId": "B"
@@ -2859,8 +2859,8 @@
         },
         "definition": "label_values(job)",
         "hide": 0,
-        "includeAll": false,
-        "multi": false,
+        "includeAll": true,
+        "multi": true,
         "name": "scrape_jobs",
         "options": [],
         "query": {

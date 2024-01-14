@@ -146,7 +146,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (bucket,range) (minio_bucket_objects_size_distribution{job=\"$scrape_jobs\"})",
+          "expr": "sum by (bucket,range) (minio_bucket_objects_size_distribution{job=~\"$scrape_jobs\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -216,7 +216,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (bucket,range) (minio_bucket_objects_version_distribution{job=\"$scrape_jobs\"})",
+          "expr": "sum by (bucket,range) (minio_bucket_objects_version_distribution{job=~\"$scrape_jobs\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -282,7 +282,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (rate(minio_bucket_replication_received_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (rate(minio_bucket_replication_received_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Data Received [{{bucket}}]",
@@ -374,7 +374,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (rate(minio_bucket_replication_sent_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (rate(minio_bucket_replication_sent_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Replication Data Sent [{{bucket}}]",
@@ -466,7 +466,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (minio_bucket_replication_failed_bytes{job=\"$scrape_jobs\"})",
+          "expr": "sum by (bucket) (minio_bucket_replication_failed_bytes{job=~\"$scrape_jobs\"})",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Replication Failed [{{bucket}}]",
@@ -558,7 +558,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (minio_bucket_replication_failed_count{job=\"$scrape_jobs\"})",
+          "expr": "sum by (bucket) (minio_bucket_replication_failed_count{job=~\"$scrape_jobs\"})",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Replication Failed Objects [{{bucket}}]",
@@ -654,7 +654,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (bucket,range,operation) (minio_bucket_replication_latency_ms{job=\"$scrape_jobs\"})",
+          "expr": "sum by (bucket,range,operation) (minio_bucket_replication_latency_ms{job=~\"$scrape_jobs\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -724,7 +724,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "sum by (bucket,le,api) (minio_bucket_requests_ttfb_seconds_distribution{job=\"$scrape_jobs\"})",
+          "expr": "sum by (bucket,le,api) (minio_bucket_requests_ttfb_seconds_distribution{job=~\"$scrape_jobs\"})",
           "format": "time_series",
           "instant": false,
           "interval": "",
@@ -790,7 +790,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket,api) (increase(minio_bucket_requests_4xx_errors_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket,api) (increase(minio_bucket_requests_4xx_errors_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{bucket,api}}",
@@ -882,7 +882,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket,api) (increase(minio_bucket_requests_inflight_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket,api) (increase(minio_bucket_requests_inflight_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{bucket,api}}",
@@ -974,7 +974,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket,api) (increase(minio_bucket_requests_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket,api) (increase(minio_bucket_requests_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{bucket,api}}",
@@ -1066,7 +1066,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (rate(minio_bucket_traffic_sent_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (rate(minio_bucket_traffic_sent_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Data Sent [{{bucket}}]",
@@ -1158,7 +1158,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (rate(minio_bucket_usage_total_bytes{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (rate(minio_bucket_usage_total_bytes{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "Usage [{{bucket}}]",
@@ -1250,7 +1250,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (increase(minio_bucket_usage_object_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (increase(minio_bucket_usage_object_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{bucket}}",
@@ -1342,7 +1342,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (increase(minio_bucket_usage_version_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (increase(minio_bucket_usage_version_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{bucket}}",
@@ -1434,7 +1434,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "sum by (bucket) (increase(minio_bucket_usage_deletemarker_total{job=\"$scrape_jobs\"}[$__rate_interval]))",
+          "expr": "sum by (bucket) (increase(minio_bucket_usage_deletemarker_total{job=~\"$scrape_jobs\"}[$__rate_interval]))",
           "interval": "1m",
           "intervalFactor": 2,
           "legendFormat": "{{bucket}}",
@@ -1522,7 +1522,7 @@
             "uid": "Prometheus"
           },
           "exemplar": true,
-          "expr": "minio_usage_last_activity_nano_seconds{job=\"$scrape_jobs\"}",
+          "expr": "minio_usage_last_activity_nano_seconds{job=~\"$scrape_jobs\"}",
           "interval": "1m",
           "legendFormat": "{{server}}",
           "refId": "A"
@@ -1597,8 +1597,8 @@
         },
         "definition": "label_values(job)",
         "hide": 0,
-        "includeAll": false,
-        "multi": false,
+        "includeAll": true,
+        "multi": true,
         "name": "scrape_jobs",
         "options": [],
         "query": {
